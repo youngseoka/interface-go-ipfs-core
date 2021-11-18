@@ -7,6 +7,11 @@ import (
 )
 
 type BlockPutSettings struct {
+	// FIXME: The "v0" coded in `go-cid` doesn't exist in the new
+	//  multicodec table https://github.com/multiformats/multicodec/blob/master/table.csv
+	//  so we need to intercept it. The complexity is that it is coupled with the
+	//  other hash options so we can't process it in its own BlockPutOption
+	//  but only when processing everything together later in BlockPutOptions.
 	Codec    string
 	MhType   uint64
 	MhLength int
@@ -38,15 +43,21 @@ func BlockPutOptions(opts ...BlockPutOption) (*BlockPutSettings, cid.Prefix, err
 	var pref cid.Prefix
 	pref.Version = 1
 
+	// No codec set, default to v0 (which is not actually a multicodec).
 	if options.Codec == "" {
 		if options.MhType != mh.SHA2_256 || (options.MhLength != -1 && options.MhLength != 32) {
+			// FIXME: From the `cid.Codecs` below both the "v0" and "protobuf"
+			//  labels mean the same `DagProtobuf = 0x70`.
 			options.Codec = "protobuf"
 		} else {
 			options.Codec = "v0"
 		}
 	}
-
+	// Transform the dummy "v0" codec flag into an actual CID previx v0 (the Codec
+	// will just be ignored then in the encoding, DagProtobuf is implied).
 	if options.Codec == "v0" && options.MhType == mh.SHA2_256 {
+		// In the CID prefix v0 the Codec set in the prefix (DagProtobuf)
+		// will be ignored.
 		pref.Version = 0
 	}
 
