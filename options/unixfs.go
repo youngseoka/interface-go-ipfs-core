@@ -46,78 +46,7 @@ type UnixfsAddOption func(*UnixfsAddSettings) error
 type UnixfsLsOption func(*UnixfsLsSettings) error
 
 func UnixfsAddOptions(opts ...UnixfsAddOption) (*UnixfsAddSettings, cid.Prefix, error) {
-	options := &UnixfsAddSettings{
-		CidVersion: -1,
-		MhType:     mh.SHA2_256,
-
-		Inline:       false,
-		InlineLimit:  32,
-		RawLeaves:    false,
-		RawLeavesSet: false,
-
-		Chunker: "size-262144",
-		Layout:  BalancedLayout,
-
-		Pin:      false,
-		OnlyHash: false,
-		FsCache:  false,
-		NoCopy:   false,
-
-		Events:   nil,
-		Silent:   false,
-		Progress: false,
-	}
-
-	for _, opt := range opts {
-		err := opt(options)
-		if err != nil {
-			return nil, cid.Prefix{}, err
-		}
-	}
-
-	// nocopy -> rawblocks
-	if options.NoCopy && !options.RawLeaves {
-		// fixed?
-		if options.RawLeavesSet {
-			return nil, cid.Prefix{}, fmt.Errorf("nocopy option requires '--raw-leaves' to be enabled as well")
-		}
-
-		// No, satisfy mandatory constraint.
-		options.RawLeaves = true
-	}
-
-	// (hash != "sha2-256") -> CIDv1
-	if options.MhType != mh.SHA2_256 {
-		switch options.CidVersion {
-		case 0:
-			return nil, cid.Prefix{}, errors.New("CIDv0 only supports sha2-256")
-		case 1, -1:
-			options.CidVersion = 1
-		default:
-			return nil, cid.Prefix{}, fmt.Errorf("unknown CID version: %d", options.CidVersion)
-		}
-	} else {
-		if options.CidVersion < 0 {
-			// Default to CIDv0
-			options.CidVersion = 0
-		}
-	}
-
-	// cidV1 -> raw blocks (by default)
-	if options.CidVersion > 0 && !options.RawLeavesSet {
-		options.RawLeaves = true
-	}
-
-	prefix, err := dag.PrefixForCidVersion(options.CidVersion)
-	if err != nil {
-		return nil, cid.Prefix{}, err
-	}
-
-	prefix.MhType = options.MhType
-	prefix.MhLength = -1
-	fmt.Println("hihihiyoungseok")
-
-	return options, prefix, nil
+	
 }
 
 
