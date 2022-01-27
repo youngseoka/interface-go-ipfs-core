@@ -115,13 +115,12 @@ func UnixfsAddOptions(opts ...UnixfsAddOption) (*UnixfsAddSettings, cid.Prefix, 
 
 	prefix.MhType = options.MhType
 	prefix.MhLength = -1
+	fmt.Println("hihihiyoungseok")
 
 	return options, prefix, nil
 }
 
-func UnixfsAddOptions_youngseok() {
-	fmt.Println("hihihiyoungseok")
-}
+
 
 func UnixfsLsOptions(opts ...UnixfsLsOption) (*UnixfsLsSettings, error) {
 	options := &UnixfsLsSettings{
