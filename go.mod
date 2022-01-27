@@ -1,4 +1,4 @@
-module github.com/youngseoka/interface-go-ipfs-core
+module interface-go-ipfs-core
 
 require (
 	github.com/ipfs/go-cid v0.0.7
