@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/ipfs/go-cid"
-	iface "github.com/ipfs/interface-go-ipfs-core"
-	opt "github.com/ipfs/interface-go-ipfs-core/options"
+	iface "github.com/youngseoka/interface-go-ipfs-core"
+	opt "github.com/youngseoka/interface-go-ipfs-core/options"
 	mbase "github.com/multiformats/go-multibase"
 )
 

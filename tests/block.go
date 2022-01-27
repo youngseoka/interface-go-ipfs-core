@@ -8,9 +8,9 @@ import (
 	"strings"
 	"testing"
 
-	coreiface "github.com/ipfs/interface-go-ipfs-core"
-	opt "github.com/ipfs/interface-go-ipfs-core/options"
-	"github.com/ipfs/interface-go-ipfs-core/path"
+	coreiface "github.com/youngseoka/interface-go-ipfs-core"
+	opt "github.com/youngseoka/interface-go-ipfs-core/options"
+	"github.com/youngseoka/interface-go-ipfs-core/path"
 
 	mh "github.com/multiformats/go-multihash"
 )

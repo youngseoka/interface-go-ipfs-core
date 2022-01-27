@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ipfs/interface-go-ipfs-core"
-	"github.com/ipfs/interface-go-ipfs-core/options"
+	"github.com/youngseoka/interface-go-ipfs-core"
+	"github.com/youngseoka/interface-go-ipfs-core/options"
 )
 
 func (tp *TestSuite) TestPubSub(t *testing.T) {

@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ipfs/interface-go-ipfs-core"
-	opt "github.com/ipfs/interface-go-ipfs-core/options"
+	"github.com/youngseoka/interface-go-ipfs-core"
+	opt "github.com/youngseoka/interface-go-ipfs-core/options"
 )
 
 func (tp *TestSuite) TestObject(t *testing.T) {

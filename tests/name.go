@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
-	path "github.com/ipfs/interface-go-ipfs-core/path"
+	path "github.com/youngseoka/interface-go-ipfs-core/path"
 
 	files "github.com/ipfs/go-ipfs-files"
 
-	coreiface "github.com/ipfs/interface-go-ipfs-core"
-	opt "github.com/ipfs/interface-go-ipfs-core/options"
+	coreiface "github.com/youngseoka/interface-go-ipfs-core"
+	opt "github.com/youngseoka/interface-go-ipfs-core/options"
 )
 
 func (tp *TestSuite) TestName(t *testing.T) {
