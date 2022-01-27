@@ -120,7 +120,7 @@ func UnixfsAddOptions(opts ...UnixfsAddOption) (*UnixfsAddSettings, cid.Prefix, 
 }
 
 func UnixfsAddOptions_youngseok() {
-	console.log("testtesttestyoungseok")
+	fmt.Println("hihihiyoungseok")
 }
 
 func UnixfsLsOptions(opts ...UnixfsLsOption) (*UnixfsLsSettings, error) {
