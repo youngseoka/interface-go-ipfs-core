@@ -119,6 +119,10 @@ func UnixfsAddOptions(opts ...UnixfsAddOption) (*UnixfsAddSettings, cid.Prefix, 
 	return options, prefix, nil
 }
 
+func UnixfsAddOptions_youngseok() {
+	console.log("testtesttestyoungseok")
+}
+
 func UnixfsLsOptions(opts ...UnixfsLsOption) (*UnixfsLsSettings, error) {
 	options := &UnixfsLsSettings{
 		ResolveChildren: true,
